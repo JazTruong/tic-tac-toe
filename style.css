@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+    border: 1px solid red;
+}
+
+body {
+    
+}
+
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 200px;
+    height: 200px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.cell {
+    border: 2px solid black;
+}

@@ -4,9 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>TIC-TAC-TOE</h1>
-    <h3>project1</h3>
+    <div class="page-wrapper">
+        <h1>TIC-TAC-TOE GAME</h1>
+
+        <div class="score-board">
+            <p>Player X: <span class="X-score">0</span></p>
+            <p>Player O: <span class="O-score">0</span></p>
+        </div>
+    
+        <div class="game-board">
+            <div class="row">
+                <div class="cell" id="cell-1"></div>
+                <div class="cell" id="cell-2"></div>
+                <div class="cell" id="cell-3"></div>
+                <div class="cell" id="cell-4"></div>
+                <div class="cell" id="cell-5"></div>
+                <div class="cell" id="cell-6"></div>
+                <div class="cell" id="cell-7"></div>
+                <div class="cell" id="cell-8"></div>
+                <div class="cell" id="cell-9"></div>
+            </div>       
+        </div>
+
+        <div class="message">
+            <p class="win-message"></p>
+            <p class="draw-message"></p>
+        </div>
+
+        <div>
+            <button class="reset-btn">Restart Game</button>
+        </div>
+    
+    </div>
+   
+
+
+
+    <script src="app.js"></script>
 </body>
 </html>
