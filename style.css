@@ -1,22 +1,100 @@
 * {
     box-sizing: border-box;
-    border: 1px solid red;
 }
 
 body {
-    
+    background-image: url(Images/christmas-background.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    padding-top: 400px;
 }
 
+.page-wrapper {
+    /* margin-top: 300px; */
+}
+
+h1 {
+    margin-top: 100px;
+    margin-bottom: 50px;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(228, 119, 41);
+}
+
+.score-board {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: auto 0;
+    margin-bottom: 0;
+}
+
+.score-board p {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    width: 45%;
+    margin: auto;
+    border: 2px solid red;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.player-turn {
+    text-align: center;
+    margin-bottom: 70px ;
+    color: red;
+    font-size: larger;
+}
 
 .row {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     margin: 30px auto;
     text-align: center;
+    cursor: pointer;
 }
 
 .cell {
-    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid red;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: large;
+}
+
+.colorOfO {
+    color: white;
+}
+
+#cell-1, #cell-2, #cell-3 {
+    border-top: 0;
+}
+
+#cell-1, #cell-4, #cell-7 {
+    border-left: 0;
+}
+
+#cell-3, #cell-6, #cell-9 {
+    border-right: 0;
+}
+
+#cell-7, #cell-8, #cell-9 {
+    border-bottom: 0;
+}
+
+.message {
+    text-align: center;
+    margin-top: 70px;
+}
+
+.reset-btn {
+    text-align: center;
+    cursor: pointer;
+    color: red;
+    margin-top: 50px;
+    font-size: larger;
 }

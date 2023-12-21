@@ -13,7 +13,17 @@
 
 //-- event handlers
 
-    //--set up slected grid - grid change to X or O
+    //--set up selected grid - grid change to X or O
+
+    //-- collecting player moves and input to an array then compare the index position for winning positions.
+
+    //-- e.g: gameBoard = [
+        0[0, 1, 2],
+        1[0, 1, 2],
+        2[0, 1, 2]
+    ]
+
+    //-- check winning base on the 3 winning functions.
 
     //-- update score board
 
@@ -50,4 +60,6 @@
 
 
 ## challenging
-- make win condition
+- making winning conditions.
+- collecting player moves and generate game board.
+- taking most of the time to sort out these 2 functions.
