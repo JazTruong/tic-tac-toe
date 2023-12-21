@@ -2,24 +2,27 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'Christmas Classica';
+    src: url(fonts/Christmas\ Classically.otf);
+}
+
 body {
     background-image: url(Images/christmas-background.jpg);
     background-size: cover;
     background-position: center;
     height: 100vh;
     padding-top: 400px;
-}
-
-.page-wrapper {
-    /* margin-top: 300px; */
+    background-repeat: no-repeat;
 }
 
 h1 {
-    margin-top: 100px;
+    margin-top: 80px;
     margin-bottom: 50px;
     text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: rgb(228, 119, 41);
+    font-family: 'Christmas Classica', sans-serif;
+    color: rgb(22, 57, 6);
+    font-size: 70px;
 }
 
 .score-board {
@@ -27,6 +30,8 @@ h1 {
     grid-template-columns: 1fr 1fr;
     margin: auto 0;
     margin-bottom: 0;
+    font-family: 'Christmas Classica', sans-serif;
+    color: rgb(22, 57, 6);
 }
 
 .score-board p {
@@ -36,15 +41,17 @@ h1 {
     width: 45%;
     margin: auto;
     border: 2px solid red;
+    border-radius: 8px;
     padding: 10px;
     font-size: 20px;
 }
 
 .player-turn {
     text-align: center;
-    margin-bottom: 70px ;
+    margin-bottom: 50px ;
     color: red;
-    font-size: larger;
+    font-size: 20px;
+    font-family: 'Christmas Classica', sans-serif;
 }
 
 .row {
@@ -63,7 +70,10 @@ h1 {
     align-items: center;
     border: 2px solid red;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: large;
+    font-size: x-small;
+    line-height: 0;
+    color: rgba(0, 0, 0, 0);
+    
 }
 
 .colorOfO {
@@ -89,6 +99,21 @@ h1 {
 .message {
     text-align: center;
     margin-top: 70px;
+    color: rgb(22, 57, 6);
+    font-size: 25px;
+    font-family: 'Christmas Classica', sans-serif;
+}
+
+.santa {
+    background-image: url(Images/santa.avif);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.reindeer {
+    background-image: url(Images/reindeer.avif);
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .reset-btn {
@@ -96,5 +121,13 @@ h1 {
     cursor: pointer;
     color: red;
     margin-top: 50px;
-    font-size: larger;
+    font-size: 20px;
+    font-family: 'Christmas Classica', sans-serif;
+}
+
+footer {
+    font-family: 'Christmas Classica', sans-serif;
+    font-size: 25px;
+    color: rgb(22, 57, 6);
+    margin-left: 20px;
 }

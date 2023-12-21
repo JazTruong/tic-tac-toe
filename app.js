@@ -1,7 +1,7 @@
 console.log("TIC TAC TOE");
 
 //-- game state (globals)
-let currentPlayer = "X";
+let currentPlayer = "Santa";
 let xScore = 0;
 let oScore = 0;
 
@@ -13,6 +13,8 @@ const playerTurnElem = document.querySelector(".player-turn")
 const messageElem = document.querySelector(".message");
 const drawMessageElem = document.querySelector(".draw-message");
 const resetBtn = document.querySelector(".reset-btn");
+const audio = new Audio("./audio/jingle-bells-bells-only-181672.mp3");
+const playAudio = document.querySelectorAll(".cell");
 
 //-- set up event listeners
 for (let cellElem of cellsElem) {
@@ -20,6 +22,7 @@ for (let cellElem of cellsElem) {
 }
 
 resetBtn.addEventListener("click", handleReset)
+playAudio.addEventListener("click", playsound)
 
 //-- event handlers
 function handleCellClick(event) {
@@ -28,14 +31,17 @@ function handleCellClick(event) {
     //if nothing in the cell then cell = currentPlayer when click
     if (!clickedCell.textContent) {
        clickedCell.textContent = currentPlayer;
-       playerTurnElem.textContent = "X Turn"
+       playerTurnElem.textContent = "Santa Turn"
     // if currentPlayer already X then change to O then to X
-       if (currentPlayer === "X") {
-        currentPlayer = "O"
-        playerTurnElem.textContent = "O Turn"
+       if (currentPlayer === "Santa") {
+        clickedCell.classList.add("santa");
+        currentPlayer = "Reindeer"
+        playerTurnElem.textContent = "Reindeer Turn"
        } else {
-        currentPlayer = "X"
+        currentPlayer = "Santa"
+        clickedCell.classList.add("reindeer");
        }
+       //clickedCell.textContent = "";
        //collecting move from player
        const gameBoard = generateGameBoard();
        //console.log(gameBoard); //-- check array output
@@ -43,15 +49,15 @@ function handleCellClick(event) {
        const winner = checkWinner(gameBoard);
 
         if (winner) {
-            if (winner === "X") {
+            if (winner === "Santa") {
                 xScore++; // update xScore
                 xScoreElem.textContent = xScore;
-            } else if (winner === "O") {
+            } else if (winner === "Reindeer") {
                 oScore++; // update oScore
                 oScoreElem.textContent = oScore;
             }
             //console.log(`Player ${winner} wins!`);
-            messageElem.textContent = `${winner} WIN!` // display message
+            messageElem.textContent = `${winner} Win!` // display message
         } else {  
             const draw = checkDraw(gameBoard);
             if (draw && !winner) {
@@ -131,8 +137,10 @@ function checkDraw(gameBoard) {
 //-- reset game
 function handleReset() {
     for (let cellElem of cellsElem) {
+        cellElem.classList.remove("santa");
+        cellElem.classList.remove("reindeer");
         cellElem.textContent = "";
-        messageElem.textContent = "";
-        playerTurnElem.textContent = "";
+        messageElem.textContent = "Santa vs Reindeer";
+        playerTurnElem.textContent = "Turn";
     }
 }
