@@ -71,7 +71,7 @@ This is the wireframe:
 ### in CSS
 
 - starting work on the grid first
-- adding background image and work with the themes
+- adding background image with the themes
 - adding images for replacing X and O
 - decorating title, buttons, scoreboards
 - adding sound effect
