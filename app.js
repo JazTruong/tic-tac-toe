@@ -1,73 +1,63 @@
-console.log("TIC TAC TOE");
-
-//-- game state (globals)
 let currentPlayer = "Santa";
-let xScore = 0;
-let oScore = 0;
+let santaScore = 0;
+let reindeerScore = 0;
 
-//-- caching DOM elements reference
 const cellsElem = document.querySelectorAll(".cell");
-const xScoreElem = document.querySelector(".x-score");
-const oScoreElem = document.querySelector(".o-score");
+const santaScoreElem = document.querySelector(".santa-score");
+const reindeerScoreElem = document.querySelector(".reindeer-score");
 const playerTurnElem = document.querySelector(".player-turn")
 const messageElem = document.querySelector(".message");
 const drawMessageElem = document.querySelector(".draw-message");
 const resetBtn = document.querySelector(".reset-btn");
-const audio = new Audio("./audio/jingle-bells-bells-only-181672.mp3");
-const playAudio = document.querySelectorAll(".cell");
+const audioElem = new Audio("./audio/jingle-bells-bells-only-181672.mp3");
 
-//-- set up event listeners
+function playSound() {
+    audioElem.play()
+}
+
 for (let cellElem of cellsElem) {
     cellElem.addEventListener("click", handleCellClick)
 }
 
 resetBtn.addEventListener("click", handleReset)
-playAudio.addEventListener("click", playsound)
+playerTurnElem.addEventListener("click", playSound)
 
-//-- event handlers
 function handleCellClick(event) {
     const clickedCell = event.target;
-    //--set up selected grid - grid change to X or O
-    //if nothing in the cell then cell = currentPlayer when click
+  
     if (!clickedCell.textContent) {
        clickedCell.textContent = currentPlayer;
-       playerTurnElem.textContent = "Santa Turn"
-    // if currentPlayer already X then change to O then to X
+       playerTurnElem.textContent = "Santa - turn"
        if (currentPlayer === "Santa") {
         clickedCell.classList.add("santa");
         currentPlayer = "Reindeer"
-        playerTurnElem.textContent = "Reindeer Turn"
+        playerTurnElem.textContent = "Reindeer - turn"
        } else {
         currentPlayer = "Santa"
         clickedCell.classList.add("reindeer");
        }
-       //clickedCell.textContent = "";
-       //collecting move from player
-       const gameBoard = generateGameBoard();
-       //console.log(gameBoard); //-- check array output
 
+       const gameBoard = generateGameBoard();
        const winner = checkWinner(gameBoard);
 
         if (winner) {
             if (winner === "Santa") {
-                xScore++; // update xScore
-                xScoreElem.textContent = xScore;
+                santaScore++; 
+                santaScoreElem.textContent = santaScore;
             } else if (winner === "Reindeer") {
-                oScore++; // update oScore
-                oScoreElem.textContent = oScore;
+                reindeerScore++; 
+                reindeerScoreElem.textContent = reindeerScore;
             }
-            //console.log(`Player ${winner} wins!`);
-            messageElem.textContent = `${winner} Win!` // display message
+            messageElem.textContent = `${winner} Win!` 
         } else {  
             const draw = checkDraw(gameBoard);
             if (draw && !winner) {
-                messageElem.textContent = "DRAW!" //display message 
+                messageElem.textContent = "DRAW!" 
             }
         }
     } 
 }
 
-    //-- generate gameBoard array - 3 rows with 3 items in each row
 function generateGameBoard() {
     const gameBoard = [];
     let index = 0;
@@ -82,37 +72,33 @@ function generateGameBoard() {
     }
     return gameBoard;
 }
-    //-- set up win/loss conditions base on the position of index
-    //-- checking ROWS - 3 options
+    
 function checkRows(gameBoard) {
     for (let row = 0; row < gameBoard.length; row++) {
         if (gameBoard[row][0] === gameBoard[row][1] && gameBoard[row][1] === gameBoard[row][2]) {
-            return gameBoard[row][0]; // return X or O  
+            return gameBoard[row][0];   
         }
     }
-    return null; // No winning
+    return null; 
 }
 
-    //-- checking COLUMNS - 3 options
 function checkColumns(gameBoard) {
     for (let col = 0; col < gameBoard.length; col++) {
         if (gameBoard[0][col] === gameBoard[1][col] && gameBoard[1][col] === gameBoard[2][col]) {
-            return gameBoard[0][col]; // return X or O
+            return gameBoard[0][col]; 
         }
     }
-    return null; // No winning
+    return null; 
 }
-    
-    //-- checking DIAGONALS - 2 options
+
 function checkDiagonals(gameBoard) {
     if ((gameBoard[0][0] === gameBoard[1][1] && gameBoard[1][1] === gameBoard[2][2]) ||
         (gameBoard[0][2] === gameBoard[1][1] && gameBoard[1][1] === gameBoard[2][0])) {
-        return gameBoard[1][1]; // Returns 'X' or 'O' 
+        return gameBoard[1][1]; 
     }
-    return null; // No winning
+    return null; 
 }
 
-    // checking winning - by invoking the 3 condition functions and only show the winner X or O in 1 of the 3 conditions. The other 2 return null. 
 function checkWinner(gameBoard) {
     const rowWin = checkRows(gameBoard);
     const colWin = checkColumns(gameBoard);
@@ -120,8 +106,7 @@ function checkWinner(gameBoard) {
 
     return rowWin || colWin || diagWin;
 }
-    //-- set up draw
-        //-- if checkWinner return null then check draw condition (no empty cell)
+
 function checkDraw(gameBoard) {
     for (let row = 0; row < gameBoard.length; row++) {
         for (let col = 0; col < gameBoard[row].length; col++) {
@@ -132,15 +117,13 @@ function checkDraw(gameBoard) {
     }
     return true;
 }
-//-- update score board - put in handleCellClick function when show win/draw
 
-//-- reset game
 function handleReset() {
     for (let cellElem of cellsElem) {
         cellElem.classList.remove("santa");
         cellElem.classList.remove("reindeer");
         cellElem.textContent = "";
         messageElem.textContent = "Santa vs Reindeer";
-        playerTurnElem.textContent = "Turn";
+        playerTurnElem.textContent = "Music";
     }
 }
